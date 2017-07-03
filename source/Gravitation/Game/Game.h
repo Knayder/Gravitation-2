@@ -1,5 +1,8 @@
+#pragma once
 #include <SFML\Graphics.hpp>
 #include <iostream>
+#include "Entity\AstroObject.h"
+
 class Game final {
 public:
 	Game(const Game&) = delete;

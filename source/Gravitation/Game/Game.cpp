@@ -6,7 +6,6 @@ Game::Game(sf::RenderWindow *window) :
 	deltaTime(0.f)
 {
 	this->window = window;
-	std::cout << "Game const\n";
 }
 
 void Game::init() {
@@ -17,7 +16,7 @@ void Game::init() {
 			continue;
 		clock.restart();
 
-		consoleLog();
+		//consoleLog();
 
 		eventHandler();
 
