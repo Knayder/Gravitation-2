@@ -10,13 +10,10 @@ Game::Game(sf::RenderWindow *window) :
 
 void Game::init() {
 	while (window->isOpen() && ableToLeave == false) {
-		//Set max possible frames per second
-		deltaTime = clock.getElapsedTime().asSeconds();
-		if (deltaTime < 1.f / maxFps)
+		if (!fpsChecker())
 			continue;
-		clock.restart();
-
-		//consoleLog();
+		
+		consoleLog();
 
 		eventHandler();
 
@@ -42,4 +39,12 @@ void Game::consoleLog()
 		system("cls");
 		std::cout << "FPS: " << 1.f / deltaTime << '\n';
 	}
+}
+
+bool Game::fpsChecker(){
+	deltaTime = clock.getElapsedTime().asSeconds();
+	if (deltaTime < 1.f / maxFps)
+		return false;
+	clock.restart();
+	return true;
 }

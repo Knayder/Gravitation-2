@@ -8,9 +8,11 @@ public:
 	void accelerate(const sf::Vector2f &value);
 	sf::Vector2f getVelocity() const;
 	float getMass() const;
+	void addForce(const sf::Vector2f &value);
 private:
 	float mass;
 	sf::Vector2f velocity;
+	sf::Vector2f force;
 
 };
 

@@ -25,4 +25,9 @@ float AstroObject::getMass() const
 	return mass;
 }
 
+void AstroObject::addForce(const sf::Vector2f &value)
+{
+	force += value;
+}
+
 

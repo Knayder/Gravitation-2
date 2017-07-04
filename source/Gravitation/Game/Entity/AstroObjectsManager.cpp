@@ -17,28 +17,39 @@ AstroObjectsManager & AstroObjectsManager::getInstance()
 	return instance;
 }
 
-void AstroObjectsManager::addObject()
+AstroObject * AstroObjectsManager::addObject(AstroObject *obj)
 {
+	if (obj != nullptr)
+		getInstance().container.push_back(obj);
+	return obj;
+}
+ 
+bool AstroObjectsManager::removeObject(const unsigned int &index){
+	AstroObjectsContainer &container = getInstance().container;
+	if (index >= container.size())
+		return false;
+	container.erase(container.begin() + index);
+	return true;
 }
 
-void AstroObjectsManager::removeObject()
-{
+bool AstroObjectsManager::removeObject(const AstroObject *target) {
+	AstroObjectsContainer &container = getInstance().container;
+	auto toDelete = std::find(container.begin(), container.end(), target);
+	if (toDelete == container.end())
+		return false;
+	container.erase(toDelete);
+	return true;
+}
+
+void AstroObjectsManager::clear() {
+	AstroObjectsContainer &container = getInstance().container;
+	container.clear();
+	for (auto it : container)
+		delete it;
 }
 
 void AstroObjectsManager::update()
 {
-	AstroObjectsManager& instance = getInstance();
-	std::size_t size = instance.container.size();
-	for (int i = 0; i < size-1; i++) {
-		AstroObject *main = instance.container[i];
-		for (int j = i + 1; j < size; j++) {
-			AstroObject *sub = instance.container[j];
-			float force = (main->getMass() * sub->getMass()) / 
-				std::pow(Math::distance(main->getPosition(), sub->getPosition()), 2);
-			sf::Vector2f direction = Math::normalizedVector(Math::deltaVector(main->getPosition(), sub->getPosition()));
-			main->accelerate(direction * (force / main->getMass()));
-			sub->accelerate((-direction) * (force / sub->getMass()));
-		}
-	}
+	
 }
 

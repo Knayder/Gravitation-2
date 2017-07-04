@@ -19,4 +19,5 @@ private:
 
 	void eventHandler();
 	void consoleLog();
+	bool fpsChecker();
 };
