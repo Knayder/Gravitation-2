@@ -3,6 +3,7 @@
 #include "AstroObject.h"
 #include "..\source\Math.h"
 #include <vector>
+#include "..\Game.h"
 class AstroObjectsManager final {
 public:
 	friend class Physics;
@@ -19,6 +20,7 @@ public:
 	static bool removeObject(const AstroObject *target);
 	static void clear();
 	static void update();
+	static void draw();
 private:
 	AstroObjectsContainer container;
 	AstroObjectsManager();

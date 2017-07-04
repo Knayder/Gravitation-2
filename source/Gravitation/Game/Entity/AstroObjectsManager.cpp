@@ -50,6 +50,14 @@ void AstroObjectsManager::clear() {
 
 void AstroObjectsManager::update()
 {
-	
+	for (auto it : getInstance().container)
+		it->update(Game::getDeltaTime());
+}
+
+void AstroObjectsManager::draw()
+{
+	sf::RenderWindow &window = Game::getWindow();
+	for (auto it : getInstance().container)
+		window.draw(*it);
 }
 

@@ -8,7 +8,9 @@ AstroObject::AstroObject(const float &radius, const float &mass) :
 }
 
 void AstroObject::update(const float & deltaTime){
-	move(velocity * deltaTime);
+	move(velocity*deltaTime);
+	accelerate(force / mass);
+	force = { 0.f, 0.f };
 }
 
 void AstroObject::accelerate(const sf::Vector2f & value){

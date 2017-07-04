@@ -1,7 +1,14 @@
 #include "Physics.h"
 
-Physics::Physics()
+Physics::Physics() :
+	additionalSpeed(10)
 {
+}
+
+Physics & Physics::getInstance()
+{
+	static Physics instance;
+	return instance;
 }
 
 void Physics::gravitation(){
@@ -14,7 +21,7 @@ void Physics::gravitation(){
 			float force = (main->getMass() * sub->getMass()) /
 				std::pow(Math::distance(main->getPosition(), sub->getPosition()), 2);
 			sf::Vector2f direction = Math::normalizedVector(Math::deltaVector(main->getPosition(), sub->getPosition()));
-			direction *= force;
+			direction *= force * getInstance().additionalSpeed;
 			main->addForce(direction);
 			sub->addForce(-direction);
 		}

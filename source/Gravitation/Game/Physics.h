@@ -5,8 +5,13 @@
 
 class Physics final {
 public:
-	Physics();
 	Physics(const Physics &) = delete;
 	void operator=(const Physics &) = delete;
-	void gravitation();
+
+	static void gravitation();
+	static void collisions();
+private:
+	int additionalSpeed;
+	Physics();
+	static Physics &getInstance();
 };

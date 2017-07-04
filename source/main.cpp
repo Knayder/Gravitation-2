@@ -3,7 +3,7 @@
 #include "Test.h"
 int main() {
 	MATH_H_TEST();
-	Gravitation game({1280u, 720u});
+	Gravitation game;
 	game.init();
 	return 0;
 }
