@@ -4,6 +4,7 @@
 #include "Entity\AstroObject.h"
 #include "Entity\AstroObjectsManager.h"
 #include "Physics.h"
+#include "Windows\Window.h"
 
 class Game final {
 public:

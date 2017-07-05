@@ -22,10 +22,14 @@ Game & Game::getInstance()
 
 void Game::init() {
 	Game &instance = getInstance();
-	AstroObjectsManager::addObject(new AstroObject(1000, 99999999, { 0.f,0.f }))
+	AstroObjectsManager::addObject(new AstroObject(1000, 10000000, { 0.f,0.f }))
 		->setVelocity({ 0.f, 0.f });
-	AstroObjectsManager::addObject(new AstroObject(50, 1, { 0.f, 16000.f }, sf::Color(230, 100, 100)))
-		->setVelocity({std::sqrt(99999999.f / 16000.f),0});
+	AstroObjectsManager::addObject(new AstroObject(50, 1, { 0.f, 1600.f }, sf::Color(230, 100, 100)))
+		->setVelocity({std::sqrt(10000000.f / 1600.f),0});
+
+	Window test({100.f, 100.f});
+	test.setPosition(100, 100);
+
 	while (instance.window.isOpen() && instance.ableToLeave == false) {
 		if (!fpsChecker())
 			continue;
@@ -47,7 +51,7 @@ void Game::init() {
 
 		instance.window.setView(instance.window.getDefaultView());
 		//Static View
-		
+		instance.window.draw(test);
 		
 		instance.window.display();
 	}

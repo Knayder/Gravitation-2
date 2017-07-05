@@ -6,6 +6,7 @@ AstroObject::AstroObject(const float &radius, const float &mass, const sf::Vecto
 {
 	setPosition(position);
 	setFillColor(color);
+	setOrigin(radius, radius);
 }
 
 void AstroObject::update(){
