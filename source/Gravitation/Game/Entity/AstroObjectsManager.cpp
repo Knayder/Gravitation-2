@@ -51,7 +51,7 @@ void AstroObjectsManager::clear() {
 void AstroObjectsManager::update()
 {
 	for (auto it : getInstance().container)
-		it->update(Game::getDeltaTime());
+		it->update();
 }
 
 void AstroObjectsManager::draw()
@@ -59,5 +59,13 @@ void AstroObjectsManager::draw()
 	sf::RenderWindow &window = Game::getWindow();
 	for (auto it : getInstance().container)
 		window.draw(*it);
+}
+
+AstroObject * AstroObjectsManager::get(const unsigned int & index)
+{
+	AstroObjectsContainer &container = getInstance().container;
+	if (index >= container.size())
+		return nullptr;
+	return container[index];
 }
 

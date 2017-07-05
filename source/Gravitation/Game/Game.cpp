@@ -22,8 +22,10 @@ Game & Game::getInstance()
 
 void Game::init() {
 	Game &instance = getInstance();
-	AstroObjectsManager::addObject(new AstroObject(50, 10000));
-	AstroObjectsManager::addObject(new AstroObject(50, 10000, { 300.f, 600.f }, sf::Color(230, 100, 100)))->accelerate({90.f,0});
+	AstroObjectsManager::addObject(new AstroObject(1000, 99999999, { 0.f,0.f }))
+		->setVelocity({ 0.f, 0.f });
+	AstroObjectsManager::addObject(new AstroObject(50, 1, { 0.f, 16000.f }, sf::Color(230, 100, 100)))
+		->setVelocity({std::sqrt(99999999.f / 16000.f),0});
 	while (instance.window.isOpen() && instance.ableToLeave == false) {
 		if (!fpsChecker())
 			continue;
@@ -73,7 +75,8 @@ void Game::consoleLog()
 		logClock.restart();
 		//system("cls");
 		std::cout << "FPS: " << 1.f / Game::getDeltaTime() << '\n';
-		std::cout << "Mouse Position: " << getInstance().window.mapPixelToCoords(sf::Mouse::getPosition(getInstance().window)).x << " " << getInstance().window.mapPixelToCoords(sf::Mouse::getPosition(getInstance().window)).y << '\n';
+		float dist = Math::distance(AstroObjectsManager::get(0)->getPosition(), AstroObjectsManager::get(1)->getPosition());
+		std::cout << "Distance: " << dist << '\n';
 	}
 }
 

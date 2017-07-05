@@ -11,7 +11,6 @@ public:
 	static void gravitation();
 	static void collisions();
 private:
-	int additionalSpeed;
 	Physics();
 	static Physics &getInstance();
 };

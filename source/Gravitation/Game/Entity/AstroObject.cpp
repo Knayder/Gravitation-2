@@ -8,14 +8,19 @@ AstroObject::AstroObject(const float &radius, const float &mass, const sf::Vecto
 	setFillColor(color);
 }
 
-void AstroObject::update(const float & deltaTime){
-	move(velocity*deltaTime);
+void AstroObject::update(){
 	accelerate(force / mass);
 	force = { 0.f, 0.f };
+	move(velocity);
 }
 
 void AstroObject::accelerate(const sf::Vector2f & value){
 	velocity += value;
+}
+
+void AstroObject::setVelocity(const sf::Vector2f & value)
+{
+	velocity = value;
 }
 
 sf::Vector2f AstroObject::getVelocity() const

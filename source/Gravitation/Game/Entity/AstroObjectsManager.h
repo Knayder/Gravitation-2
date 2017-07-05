@@ -21,6 +21,7 @@ public:
 	static void clear();
 	static void update();
 	static void draw();
+	static AstroObject* get(const unsigned int &index);
 private:
 	AstroObjectsContainer container;
 	AstroObjectsManager();

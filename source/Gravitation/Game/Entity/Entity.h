@@ -7,6 +7,6 @@ public:
 	{
 
 	}
-	virtual void update(const float &) = 0;
+	virtual void update() = 0;
 
 };
