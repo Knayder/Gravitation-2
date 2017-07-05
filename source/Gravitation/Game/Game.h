@@ -18,16 +18,16 @@ private:
 	static Game &getInstance();
 
 	sf::RenderWindow window;
+	sf::View view;
 
 	bool ableToLeave;
 	sf::Clock clock;
-	sf::Clock consoleLogClock;
 	float maxFps;
 	float deltaTime;
 
 	static void eventHandler();
 	static void consoleLog();
 	static bool fpsChecker();
-
+	static void followCursorWithView();
 	
 };

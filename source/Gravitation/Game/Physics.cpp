@@ -27,3 +27,8 @@ void Physics::gravitation(){
 		}
 	}
 }
+
+void Physics::collisions()
+{
+	//TODO: DO THIS XD
+}

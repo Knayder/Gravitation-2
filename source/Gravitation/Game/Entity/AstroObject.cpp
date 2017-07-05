@@ -1,10 +1,11 @@
 #include "AstroObject.h"
 
-AstroObject::AstroObject(const float &radius, const float &mass) : 
+AstroObject::AstroObject(const float &radius, const float &mass, const sf::Vector2f &position, const sf::Color &color) : 
 	Entity(radius),
 	mass(mass)
 {
-
+	setPosition(position);
+	setFillColor(color);
 }
 
 void AstroObject::update(const float & deltaTime){
