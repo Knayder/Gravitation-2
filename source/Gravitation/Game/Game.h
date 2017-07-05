@@ -5,6 +5,7 @@
 #include "Entity\AstroObjectsManager.h"
 #include "Physics.h"
 #include "Windows\Window.h"
+#include "EventHandler.h"
 
 class Game final {
 public:
@@ -14,6 +15,7 @@ public:
 	static void init();
 	static float getDeltaTime();
 	static sf::RenderWindow &getWindow();
+	static sf::View &getView();
 private:
 	Game();
 	static Game &getInstance();
@@ -26,9 +28,7 @@ private:
 	float maxFps;
 	float deltaTime;
 
-	static void eventHandler();
 	static void consoleLog();
 	static bool fpsChecker();
-	static void followCursorWithView();
 	
 };

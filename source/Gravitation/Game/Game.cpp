@@ -22,10 +22,10 @@ Game & Game::getInstance()
 
 void Game::init() {
 	Game &instance = getInstance();
-	AstroObjectsManager::addObject(new AstroObject(1000, 10000000, { 0.f,0.f }))
+	AstroObjectsManager::addObject(new AstroObject(1000, 1000, { 0.f,0.f }))
 		->setVelocity({ 0.f, 0.f });
 	AstroObjectsManager::addObject(new AstroObject(50, 1, { 0.f, 1600.f }, sf::Color(230, 100, 100)))
-		->setVelocity({std::sqrt(10000000.f / 1600.f),0});
+		->setVelocity({std::sqrt(1000.f / 1600.f),0});
 
 	Window test({100.f, 100.f});
 	test.setPosition(100, 100);
@@ -36,8 +36,8 @@ void Game::init() {
 		
 
 		consoleLog();
-		eventHandler();
-		followCursorWithView();
+		EventHandler::getInput();
+		EventHandler::interpertInput();
 		
 		Physics::gravitation();
 		AstroObjectsManager::update();
@@ -57,20 +57,7 @@ void Game::init() {
 	}
 }
 
-void Game::eventHandler() {
-	Game &instance = getInstance();
-	sf::Event event;
-	while (instance.window.pollEvent(event)) {
-		if (event.type == sf::Event::Closed)
-			instance.window.close();
-		else if (event.type == sf::Event::MouseWheelScrolled) {
-			if (event.mouseWheelScroll.delta > 0)
-				instance.view.zoom(0.9);
-			else
-				instance.view.zoom(1.1);
-		}
-	}
-}
+
 
 void Game::consoleLog()
 {
@@ -93,20 +80,7 @@ bool Game::fpsChecker(){
 	return true;
 }
 
-void Game::followCursorWithView()
-{
-	Game &instance = getInstance();
-	
-	sf::Vector2f currentMousePosition = 
-		instance.window.mapPixelToCoords(sf::Mouse::getPosition(instance.window), instance.view);
-	static sf::Vector2f oldMousePosition = currentMousePosition;
-	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			instance.view.move(oldMousePosition - currentMousePosition);
 
-	oldMousePosition = instance.window.mapPixelToCoords(sf::Mouse::getPosition(instance.window), instance.view);
-}
 
 float Game::getDeltaTime()
 {
@@ -116,4 +90,9 @@ float Game::getDeltaTime()
 sf::RenderWindow & Game::getWindow()
 {
 	return getInstance().window;
+}
+
+sf::View & Game::getView()
+{
+	return getInstance().view;
 }
