@@ -27,7 +27,7 @@ void Game::init() {
 	AstroObjectsManager::addObject(new AstroObject(50, 1, { 0.f, 1600.f }, sf::Color(230, 100, 100)))
 		->setVelocity({std::sqrt(1000.f / 1600.f),0});
 
-	Window test({100.f, 100.f});
+	Window test({200.f, 300.f});
 	test.setPosition(100, 100);
 
 	while (instance.window.isOpen() && instance.ableToLeave == false) {
