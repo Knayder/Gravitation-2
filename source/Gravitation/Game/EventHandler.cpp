@@ -26,14 +26,20 @@ void EventHandler::getInput(){
 		else if (event.type == sf::Event::KeyPressed) {
 			if (event.key.code == sf::Keyboard::Space)
 				instance.space = true;
-			else
+		}
+
+		else if (event.type == sf::Event::KeyReleased) {
+			if (event.key.code == sf::Keyboard::Space)
 				instance.space = false;
 		}
 
 		else if (event.type == sf::Event::MouseButtonPressed) {
 			if (event.mouseButton.button == sf::Mouse::Left)
 				instance.mouseLeft = true;
-			else
+		}
+		
+		else if (event.type == sf::Event::MouseButtonReleased) {
+			if (event.mouseButton.button == sf::Mouse::Left)
 				instance.mouseLeft = false;
 		}
 
@@ -61,9 +67,9 @@ void EventHandler::interpertInput()
 	}
 
 	if(instance.scrollDelta > 0)
-		view.zoom(0.9);
+		view.zoom(0.75f);
 	else if(instance.scrollDelta < 0)
-		view.zoom(1.1);
+		view.zoom(1.25f);
 	instance.scrollDelta = 0.f;
 
 	//===========

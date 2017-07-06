@@ -6,7 +6,7 @@ Window::Window(const sf::Vector2f &size) :
 	exitButton("test")
 {
 	background.setFillColor(sf::Color(250,250,250));
-	background.setOutlineThickness(1);
+	background.setOutlineThickness(0.2f);
 	background.setOutlineColor(sf::Color(20,20,20));
 	bar.setFillColor(sf::Color(220, 220, 220));
 	exitButton.setPosition({ size.x - 9.f, 0.f });
